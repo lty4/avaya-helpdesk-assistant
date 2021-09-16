@@ -42,24 +42,24 @@ def _validate_email(
 ) -> Dict[Text, Any]:
     """Validate email is in ticket system."""
     if not value:
-        return {"email": None, "previous_email": None}
+        return {"1_email": None, "previous_email": None}
     elif isinstance(value, bool):
         value = tracker.get_slot("previous_email")
 
     if localmode:
-        return {"email": value}
+        return {"1_email": value}
 
     results = snow.email_to_sysid(value)
     caller_id = results.get("caller_id")
 
     if caller_id:
-        return {"email": value, "caller_id": caller_id}
+        return {"1_email": value, "caller_id": caller_id}
     elif isinstance(caller_id, list):
         dispatcher.utter_message(template="utter_no_email")
-        return {"email": None}
+        return {"1_email": None}
     else:
         dispatcher.utter_message(results.get("error"))
-        return {"email": None}
+        return {"1_email": None}
 
 
 class ValidateOpenIncidentForm(FormValidationAction):
@@ -86,10 +86,10 @@ class ValidateOpenIncidentForm(FormValidationAction):
         """Validate priority is a valid value."""
 
         if value.lower() in snow.priority_db():
-            return {"priority": value}
+            return {"2_priority": value}
         else:
             dispatcher.utter_message(template="utter_no_priority")
-            return {"priority": None}
+            return {"2_priority": None}
 
 
 class ActionOpenIncident(Action):
@@ -107,11 +107,11 @@ class ActionOpenIncident(Action):
         was created
         """
 
-        priority = tracker.get_slot("priority")
-        email = tracker.get_slot("email")
-        problem_description = tracker.get_slot("problem_description")
-        incident_title = tracker.get_slot("incident_title")
-        confirm = tracker.get_slot("confirm")
+        priority = tracker.get_slot("2_priority")
+        email = tracker.get_slot("1_email")
+        problem_description = tracker.get_slot("3_problem_description")
+        incident_title = tracker.get_slot("4_incident_title")
+        confirm = tracker.get_slot("5_confirm")
         if not confirm:
             dispatcher.utter_message(
                 template="utter_incident_creation_canceled"
@@ -179,7 +179,7 @@ class ActionCheckIncidentStatus(Action):
         """Look up all incidents associated with email address
            and return status of each"""
 
-        email = tracker.get_slot("email")
+        email = tracker.get_slot("1_email")
 
         incident_states = {
             "New": "is currently awaiting triage",
