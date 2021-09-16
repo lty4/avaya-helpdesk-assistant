@@ -212,7 +212,7 @@ forms:
         value: false
   incident_status_form:
     required_slots:
-      email:
+      1_email:
       - entity: email
         type: from_entity
       - intent: affirm
