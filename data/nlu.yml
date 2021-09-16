@@ -275,6 +275,7 @@ nlu:
     - sara@rasa.com
     - [urgent]{"entity": "priority", "value": "high"}
     - [critical]{"entity": "priority", "value": "high"}
+    - l.young@rasa.com
 - intent: out_of_scope
   examples: |
     - what is the square root of 5
