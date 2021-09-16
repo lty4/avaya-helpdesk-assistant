@@ -100,13 +100,13 @@ responses:
   - text: Goodbye!
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-  utter_ask_email:
+  utter_ask_1_email:
   - text: What is your email address?
-  utter_ask_incident_title:
+  utter_ask_4_incident_title:
   - text: What should we use for the title of this incident?
-  utter_ask_problem_description:
+  utter_ask_3_problem_description:
   - text: What is the problem description for the issue?
-  utter_ask_priority:
+  utter_ask_2_priority:
   - buttons:
     - payload: /inform{"priority":"low"}
       title: low
@@ -116,9 +116,9 @@ responses:
       title: high
     text: What is the priority of this issue?
   utter_no_priority:
-  - text: Sorry "{priority}" is not a valid priority. Please try again.
+  - text: Sorry "{2_priority}" is not a valid priority. Please try again.
   utter_no_email:
-  - text: Sorry, "{email}" isn't in our incident management system. Please try again.
+  - text: Sorry, "{1_email}" isn't in our incident management system. Please try again.
   utter_help:
   - text: |-
       I can help you open a service request ticket, or check the status of your open incidents. 
@@ -133,7 +133,7 @@ responses:
   - text: I didn't quite understand that. Could you rephrase?
   utter_ask_use_previous_email:
   - text: Would you like to use the last email address you used, {previous_email}?
-  utter_ask_confirm:
+  utter_ask_5_confirm:
   - buttons:
     - payload: /affirm
       title: Yes
@@ -141,10 +141,10 @@ responses:
       title: No, cancel the incident
     text: |-
       Should I open an incident with the following details? 
-          email: {email} 
-          problem description: {problem_description} 
-          title: {incident_title} 
-          priority: {priority}
+          email: {1_email} 
+          problem description: {3_problem_description} 
+          title: {4_incident_title} 
+          priority: {2_priority}
   utter_incident_creation_canceled:
   - text: Alright, I have cancelled the incident.
   utter_ask_whatelse:
