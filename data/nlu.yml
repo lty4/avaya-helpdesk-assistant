@@ -465,6 +465,15 @@ nlu:
     - let me speak to a real person
     - let me speak to a real person please
     - i want to talk to a real person
+- intent: mood_sad
+  examples: |
+    - sad
+    - I am feeling aweful
+    - Sad!
+- intent: mood_great
+  examples: |
+    - I am feeling wonderful!
+    - great!
 - synonym: high
   examples: |
     - urgent

@@ -41,6 +41,10 @@ intents:
     use_entities: true
 - nlu_fallback:
     use_entities: true
+- mood_sad:
+    use_entities: true
+- mood_great:
+    use_entities: true
 entities:
 - email
 - priority
@@ -157,6 +161,14 @@ responses:
   - text: If you were talking to me via chatroom, I would have handed you off to {handoffhost}.
   utter_no_handoff:
   - text: Since you haven't configured a host to hand off to, I can't send you anywhere!
+  utter_greet_check_mood:
+  - text: Hi! I am a philosophical chatbot! How are you feeling today?
+  utter_great:
+  - text: I am glad to hear that.
+  utter_wisdom:
+  - text: Life is short - so are worries! Don't waste life in worries - enjoy while you can!
+  utter_not_sorry:
+  - text: Should I - or anyone - feel sorry to hear that? No!
 actions:
 - action_ask_email
 - action_check_incident_status
